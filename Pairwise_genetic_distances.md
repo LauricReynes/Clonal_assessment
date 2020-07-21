@@ -1,7 +1,7 @@
 # Explore pairwise genetic distances between individuals
 
 #### Download R packages
-```
+```{r}
 library(ade4)
 library(adegenet)
 library(pegas)
@@ -11,7 +11,7 @@ library(reshape)
 library(cowplot)
 ```
 ### 1. Load a VCF file and convert to GENIND object
-```
+```{r}
 setwd("file path")
 
 vcf <- read.vcf("NAME.vcf", to = 130572)
@@ -19,7 +19,7 @@ X<- loci2genind(vcf)
 ```
 
 ### 2. Compute the distance matrix reflecting the percentage of allelic differences between two individuals
-```
+```{r}
 dist_matrice <- diss.dist(X, percent = TRUE, mat = TRUE)
 pairwise_distance_ld [dist_matrice == 0] <- NA
 pairwise_distance_ld <- melt(dist_matrice)
@@ -38,7 +38,7 @@ Replicate 1 | Replicate 2 | distance (d)
 LRBM2P27_ir | LRBM2P27_r | 0.022
 LRBO2_ir | LRBO2_r | 0.014
 
-```
+```{r}
 setwd("file path")
 distmatrice_pairs_lr <- read.table("distmatrice_pairs_lr.txt", header = TRUE)
 
@@ -68,7 +68,7 @@ LD_CLA_2018_01_ir | LD_CLA_2018_01_r | 0.001
 LD_PER_2018_01_ir | LD_PER_2018_01_r | 0.0004
 LD_SBOB_2018_01_ir | LD_SBOB_2018_01_r | 0.0009
 
-```
+```{r}
 setwd("file path")
 distmatrice_pairs_ld <- read.table("distmatrice_pairs_ld.txt", header = TRUE)
 
@@ -89,7 +89,7 @@ distance_ld <- ggplot(distmatrice_pairs_ld, aes(x=value)) +
         axis.text.y=element_text(colour="black", size = 10)) 
 ```
 ### 4. Produce the figures as they appear in the manuscript and save in image format (300 dpi)
-```
+```{r}
 plot_grid(distance_lr,distance_ld,
           labels =c("A","B"),label_fontface = "bold", ncol=1, nrow = 2,
           label_size = 17,
