@@ -31,7 +31,7 @@ write.table(pairwise_distance,file="./distmatrice_pairs.txt", sep = "\t", quote=
 * Clonal assessment: we chose the maximum value of technical replicates (d = 0.022) to separate disctinct Multi-locus lineages (MLLs) 
 * Technical replicates were excluded from the following analyses but pairwise distances of replicates are reported below
 
-##### *Laminaria rodriguezii (n=46)*
+##### *Laminaria rodriguezii (n=43)*
 
 Replicate 1 | Replicate 2 | distance (d)
 ------------|------------|------------
