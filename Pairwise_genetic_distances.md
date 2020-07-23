@@ -1,4 +1,4 @@
-# Explore pairwise genetic distances between individuals
+# Clonal assessment: explore pairwise genetic distances between individuals
 
 #### Download R packages
 ```{r}
