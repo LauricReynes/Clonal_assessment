@@ -10,7 +10,11 @@ library(poppr)
 library(reshape)
 library(cowplot)
 ```
-### 1. Load a VCF file and convert to GENIND object
+
+* Distance matrices employed in the study are available in the repository (**'pairwise_distance_lr.txt'** and **'pairwise_distance_ld.txt'**)
+* To reproduce **clonal assessment** as well as the study go to step 3 
+
+### 1. Load your VCF file and convert to GENIND object
 ```{r}
 setwd("file path")
 
@@ -19,28 +23,29 @@ X<- loci2genind(vcf)
 ```
 
 ### 2. Compute the distance matrix reflecting the percentage of allelic differences between two individuals
+
 ```{r}
 dist_matrice <- diss.dist(X, percent = TRUE, mat = TRUE)
 pairwise_distance_ld [dist_matrice == 0] <- NA
 pairwise_distance_ld <- melt(dist_matrice)
-write.table(pairwise_distance,file="./distmatrice_pairs.txt", sep = "\t", quote=FALSE, row.names = TRUE, col.names = TRUE)
+
+write.table(pairwise_distance_ld,file="./pairwise_distance_lr.txt", sep = "\t", quote=FALSE, row.names = TRUE, col.names = TRUE)
 ```
-### 3. Visualize the frequency of pairwise genetic distances from distances matrices of both species
+### 3. Clonal assessment in *Laminaria rodriguezii* using pairwise genetic distances
 
-* Distance matrix 'distmatrice_pairs_lr.txt' and 'distmatrice_pairs_ld.txt' are available in the repository.
-* Clonal assessment: we chose the maximum value of technical replicates (d = 0.022) to separate disctinct Multi-locus lineages (MLLs) 
-* Technical replicates were excluded from the following analyses but pairwise distances of replicates are reported below
+* Technical replicates were excluded for the following analyses but pairwise distances between replicates are reported in tables below
+* We chose the maximum value between technical replicates (see below d = 0.022) as a distance thresold to separate multi-locus lineages (MLLs)
 
-##### *Laminaria rodriguezii (n=43)*
+##### *Laminaria rodriguezii* (n=43)
 
-Replicate 1 | Replicate 2 | distance (d)
+Replicate A | Replicate B | distance (d)
 ------------|------------|------------
 LRBM2P27_ir | LRBM2P27_r | 0.022
 LRBO2_ir | LRBO2_r | 0.014
 
 ```{r}
 setwd("file path")
-distmatrice_pairs_lr <- read.table("distmatrice_pairs_lr.txt", header = TRUE)
+distmatrice_pairs_lr <- read.table("./pairwise_distance_lr.txt.", header = TRUE)
 
 distance_lr <- ggplot(distmatrice_pairs_lr, aes(x=value)) +  
   geom_histogram(color="black", fill="firebrick1", alpha =0.6, bins  = 100 , position = "dodge",aes(x=value,y=(..count..)/length(distmatrice_pairs_lr$value))) +
@@ -58,9 +63,11 @@ distance_lr <- ggplot(distmatrice_pairs_lr, aes(x=value)) +
         axis.text.x=element_text(colour="black", size = 10),
         axis.text.y=element_text(colour="black", size = 10)) 
 ```
-##### *Laminaria digitata (n=116)*
+##### *Laminaria digitata* (n=116)
 
-Replicate 1 | Replicate 2 | distance (d)
+* Comparison of the pairwise-distances among individuals of the sexual species *L. digitata*
+
+Replicate A | Replicate B | distance (d)
 ------------|------------|------------
 LD_ALL_2018_01_ir | LD_ALL_2018_01_r | 0.020
 LD_BODO_2018_8_ir | LD_BODO_2018_8_r | 0.0009
@@ -70,7 +77,7 @@ LD_SBOB_2018_01_ir | LD_SBOB_2018_01_r | 0.0009
 
 ```{r}
 setwd("file path")
-distmatrice_pairs_ld <- read.table("distmatrice_pairs_ld.txt", header = TRUE)
+distmatrice_pairs_ld <- read.table("./pairwise_distance_ld.txt.", header = TRUE)
 
 distance_ld <- ggplot(distmatrice_pairs_ld, aes(x=value)) +  
   geom_histogram(color="black", fill="aquamarine3", alpha =0.6, bins  = 100 , position = "dodge",aes(x=value,y=(..count..)/length(distmatrice_pairs_ld$value))) +
