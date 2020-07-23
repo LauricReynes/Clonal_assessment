@@ -34,7 +34,7 @@ write.table(pairwise_distance_ld,file="./pairwise_distance_lr.txt", sep = "\t", 
 ### 3. Clonal assessment in *Laminaria rodriguezii* using pairwise genetic distances
 
 * Technical replicates were excluded for the following analyses but pairwise distances between replicates are reported in tables below
-* We chose the maximum value between technical replicates (see below d = 0.022) as a distance thresold to separate multi-locus lineages (MLLs)
+* We chose the maximum value between technical replicates (d = 0.022) as a distance thresold to separate multi-locus lineages (MLLs)
 
 ##### *Laminaria rodriguezii* (n=43)
 
