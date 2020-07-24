@@ -12,7 +12,7 @@ library(cowplot)
 ```
 
 * Distance matrices employed in the study are available in the repository (**'pairwise_distance_lr.txt'** and **'pairwise_distance_ld.txt'**)
-* To reproduce **clonal assessment** as well as the study go directly to step 3
+* To reproduce **clonal assessment** as well as the study go directly to step 3 otherwise, go to step 1 to compute pairwise genetic distanvce from a VCF file 
 
 ### 1. Load your VCF file and convert to GENIND object
 ```{r}
