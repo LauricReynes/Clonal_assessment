@@ -96,7 +96,7 @@ distance_ld <- ggplot(distmatrice_pairs_ld, aes(x=value)) +
         axis.text.x=element_text(colour="black", size = 10),
         axis.text.y=element_text(colour="black", size = 10)) 
 ```
-### 4. Produce the figures as they appear in the manuscript and save in image format (300 dpi)
+### 4. Produce the figures as they appear in the study and save in image format (300 dpi)
 ```{r}
 plot_grid(distance_lr,distance_ld,
           labels =c("A","B"),label_fontface = "bold", ncol=1, nrow = 2,
