@@ -11,7 +11,7 @@ library(reshape)
 library(cowplot)
 ```
 
-* To reproduce **clonal assessment in *Laminaria rodriguezii*** go directly to step 3 and you can use the following files in the directory:
+* To reproduce **clonal assessment in *Laminaria rodriguezii*** go directly to step 3 and you can use (in the directory) the following files:
 * Pairwise genetic distances of *L. rodriguezii* (**'pairwise_distance_lr.txt'**) and *L. digitata* (**'pairwise_distance_ld.txt'**)
 * Otherwise, go to step 1 to compute pairwise genetic distances from your VCF file
 
